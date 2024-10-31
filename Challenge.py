@@ -1,4 +1,4 @@
-from scapy.all import sniff, AsyncSniffer
+from scapy.all import sniff, AsyncSniffer  
 from collections import Counter
 import argparse
 import mysql.connector
@@ -27,6 +27,7 @@ def connect_db():
 
 # Guardar estadísticas en la base de datos:
 def guardar_en_db():
+    print("connectando a db...")
     db_connection = connect_db()
     if db_connection is None:
         print("Error: no se pudo establecer conexión con la base de datos.")
@@ -93,7 +94,9 @@ def print_statistics():
         print(f"  - {ip}: {count} bytes")
 
     # Guardar las estadísticas en la base de datos
+    print("Guardando en db...")
     guardar_en_db()
+    print("Finalizando db")
 
 def main(interface):
     print(f"Escribe 'start' para comenzar la captura y 'stop' para detenerla.")
