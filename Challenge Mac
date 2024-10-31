@@ -17,7 +17,7 @@ def connect_db():
             host="127.0.0.1",       # IP localhost base de datos
             user="root",
             password="adminroot",
-            database="trafficanalysis",       # Nombre de la base de datos 
+            database="TrafficAnalysis",       # Nombre de la base de datos 
             port=3306               # Puerto 
         )
         print("Conexión exitosa a la base de datos.")
@@ -28,7 +28,9 @@ def connect_db():
 
 # Guardar estadísticas en la base de datos:
 def guardar_en_db():
+    print("connect en db...")
     db_connection = connect_db()
+    print("conectado en db...")
     if db_connection is None:
         print("Error: no se pudo establecer conexión con la base de datos.")
         return
@@ -94,7 +96,9 @@ def print_statistics():
         print(f"  - {ip}: {count} bytes")
 
     # Guardar las estadísticas en la base de datos
+    print("Guardando en db...")
     guardar_en_db()
+    print("Finalizando db")
 
 def main(interface):
     print(f"Escribe 'start' para comenzar la captura y 'stop' para detenerla.")
@@ -120,7 +124,7 @@ def main(interface):
         else:
             print("Comando no reconocido. Usa 'start' para comenzar y 'stop' para detener.")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     parser = argparse.ArgumentParser(description="Aplicación de análisis de tráfico de red")
     parser.add_argument("interface", help="Interfaz de red a usar para la captura")
     args = parser.parse_args()
