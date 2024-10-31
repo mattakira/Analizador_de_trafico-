@@ -15,7 +15,7 @@ def connect_db():
         connection = mysql.connector.connect(
             host="127.0.0.1",       # IP localhost base de datos
             user="root",
-            password="root",
+            password="adminroot",
             database="trafficanalysis",       # Nombre de la base de datos 
             port=3306               # Puerto 
         )
